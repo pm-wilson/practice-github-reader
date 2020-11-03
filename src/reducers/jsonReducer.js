@@ -3,7 +3,7 @@ import { RESET_JSON, SET_JSON } from '../actions/jsonActions';
 const initialState = {
   raw: {},
   pretty: '{}',
-  yaml: ''
+  yaml: '',
 };
 
 export default function reducer(state = initialState, action) {
