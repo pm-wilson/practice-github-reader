@@ -19,9 +19,9 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         searchedUserName: action.payload.searchedUserName,
-        followerCount: action.payload.follower,
-        followingCount: action.payload.following,
-        linkUrl: action.payload.url,
+        followerCount: action.payload.followerCount,
+        followingCount: action.payload.followingCount,
+        linkUrl: action.payload.linkUrl,
       };
     default: return state;
   }

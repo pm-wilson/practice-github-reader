@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchUser, setUserName, setUserInformation } from '../../actions/jsonActions';
+import { fetchUser, fetchUserData, setUserName, setUserInformation } from '../../actions/jsonActions';
 
 const Input = () => {
   const user = useSelector(state => state.userName);
@@ -16,9 +16,11 @@ const Input = () => {
     console.log(user);
 
     //fetches from api
-    dispatch(setUserInformation(fetchUser(user)));
+    dispatch(fetchUser(user));
 
-    //sends info to output
+    //dispatch(fetchUserData(user));
+
+    //saves to state
   };
 
   return (
