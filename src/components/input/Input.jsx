@@ -13,14 +13,7 @@ const Input = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(user);
-
-    //fetches from api
     dispatch(fetchUser(user));
-
-    //dispatch(fetchUserData(user));
-
-    //saves to state
   };
 
   return (
