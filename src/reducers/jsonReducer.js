@@ -1,21 +1,28 @@
-import { RESET_JSON, SET_JSON } from '../actions/jsonActions';
+import { SET_USER_NAME, SET_USER_INFORMATION } from '../actions/jsonActions';
 
 const initialState = {
-  raw: {},
-  pretty: '{}',
-  yaml: ''
+  userName: '',
+  searchedUserName: '',
+  followerCount: 0,
+  followingCount: 0,
+  linkUrl: '',
 };
 
 export default function reducer(state = initialState, action) {
   switch(action.type) {
-    case SET_JSON:
+    case SET_USER_NAME:
       return {
         ...state,
-        raw: action.payload,
-        pretty: JSON.stringify(action.payload, null, 2),
+        userName: action.payload,
       };
-    case RESET_JSON:
-      return initialState;
+    case SET_USER_INFORMATION:
+      return {
+        ...state,
+        searchedUserName: action.payload.searchedUserName,
+        followerCount: action.payload.followerCount,
+        followingCount: action.payload.followingCount,
+        linkUrl: action.payload.linkUrl,
+      };
     default: return state;
   }
 }

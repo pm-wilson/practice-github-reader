@@ -1,10 +1,25 @@
-export const SET_JSON = 'SET_JSON';
-export const setJSON = json => ({
-  type: SET_JSON,
+import { getGitHubInfo } from '../services/gitHubApi';
+
+export const SET_USER_NAME = 'SET_USER_NAME';
+export const setUserName = userName => ({
+  type: SET_USER_NAME,
+  payload: userName,
+});
+
+export const SET_USER_INFORMATION = 'SET_USER_INFORMATION';
+export const setUserInformation = json => ({
+  type: SET_USER_INFORMATION,
   payload: json,
 });
 
-export const RESET_JSON = 'RESET_JSON';
-export const resetJSON = () => ({
-  type: RESET_JSON
-});
+export const fetchUser = (userName) => dispatch => {
+  getGitHubInfo(userName)
+    .then(info => {
+      dispatch(setUserInformation({
+        searchedUserName: info.login,
+        followerCount: info.followers,
+        followingCount: info.following,
+        linkUrl: info.url,
+      }));
+    });
+};
